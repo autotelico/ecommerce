@@ -71,14 +71,17 @@ button:focus-visible {
   border-radius: 15px;
   box-shadow: #f9f9f9 0 0 51px;
   padding: 10px;
+  max-width: 250px;
 }
 
 #catalog {
   background-color: royalblue;
-
-  /* change these later to min   */
-  min-height: 600px;
-  min-width: 1000px;
+  max-width: 300px;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #item-menu {
@@ -92,7 +95,28 @@ button:focus-visible {
 }
 
 .item {
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  margin: 30px 0;
+  border-radius: 15px;
   background-color: goldenrod;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.quantity-adjuster {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-adjuster button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
 }

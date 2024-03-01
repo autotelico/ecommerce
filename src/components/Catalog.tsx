@@ -5,7 +5,7 @@ interface Item {
   id: number;
   name: string;
   price: string;
-  amount: string;
+  quantity: number;
 }
 
 export default function Catalog() {
@@ -20,19 +20,22 @@ export default function Catalog() {
   function addItem() {
     const itemName = document.querySelector<HTMLInputElement>("#item-name");
     const itemPrice = document.querySelector<HTMLInputElement>("#item-price");
-    const itemAmount = document.querySelector<HTMLInputElement>("#item-amount");
 
     const item: Item = {
       id: idRef.current,
       name: itemName?.value || "",
       price: itemPrice?.value || "",
-      amount: itemAmount?.value || "",
+      quantity: 0,
     };
 
     setItemList((prevItemList) => [...prevItemList, item]);
     idRef.current++;
     handleShow();
     console.log(itemList);
+  }
+
+  function updateItemQuantity(item) {
+    // Sets the quantity of items the user wants to buy
   }
 
   function deleteItem(itemId: number) {
@@ -46,12 +49,13 @@ export default function Catalog() {
         handleShow={handleShow}
         addItem={addItem}
       />
-      {!!itemList.length && <Item itemList={itemList} deleteItem={deleteItem}/>}
+      {!!itemList.length && <Item itemList={itemList} updateItemQuantity={updateItemQuantity} deleteItem={deleteItem}/>}
     </div>
   );
 }
 
-function Item({ itemList, deleteItem }) {
+function Item({ itemList, updateItemQuantity, deleteItem }) {
+
   return (
     <>
       {itemList.map((item: Item) => {
@@ -62,7 +66,11 @@ function Item({ itemList, deleteItem }) {
               Price:{" "}
               {item.price.includes(",") ? item.price : item.price + ",00"}
             </p>
-            <p>Available amount: {item.amount}</p>
+            <div className="quantity-adjuster">
+              <button onClick={() => updateItemQuantity(item)}>-</button>
+              <p>Amount: {item.quantity > 0 ? item.quantity : 0}</p>
+              <button onClick={() => updateItemQuantity(item)}>+</button>
+            </div>
             <button onClick={() => deleteItem(item.id)}>Delete item</button>
           </div>
         );
@@ -84,7 +92,6 @@ function ItemMenu({ showItemMenu, handleShow, addItem }) {
             decimalsLimit={2}
             maxLength={6}
           />
-          <input type="text" id="item-amount" placeholder="Available amount" />
           <button onClick={addItem}>Add</button>
           <button onClick={handleShow}>Back</button>
         </div>
