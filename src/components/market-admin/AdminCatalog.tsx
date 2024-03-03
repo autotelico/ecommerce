@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CurrencyInput from 'react-currency-input-field';
-import Modal from './Modal.tsx';
+import Modal from '../Modal.tsx';
 
 interface Item {
   id: number;
@@ -9,7 +9,7 @@ interface Item {
   quantity: number;
 }
 
-export default function Catalog() {
+export default function AdminCatalog() {
   const [itemList, setItemList] = useState<Item[]>([]);
   const [showItemMenu, setShowItemMenu] = useState<Boolean>(false);
   const [showModal, setShowModal] = useState<Boolean>(false);
@@ -54,6 +54,7 @@ export default function Catalog() {
       {!!itemList.length && (
         <Item
           itemList={itemList}
+          setItemList={setItemList}
           handleItemQuantity={handleItemQuantity}
           deleteItem={deleteItem}
         />
@@ -62,25 +63,26 @@ export default function Catalog() {
   );
 }
 
-function Item({ itemList, handleItemQuantity, deleteItem }) {
+function Item({ itemList, setItemList, handleItemQuantity, deleteItem }) {
+
+  function handleIncrease(newItem): void {
+    setItemList(prevItemList => {
+      const filteredItemList = prevItemList.filter(item => item !== newItem)
+      return [...filteredItemList, newItem]
+    })
+  }
+
+  function handleDecrease(newItem): void {
+    // if () {
+    // }
+  }
+
+  function addItemToCart(item): void {
+    
+  }
   return (
     <>
       {itemList.map((item: Item) => {
-        const [amount, setAmount] = useState<number>(0);
-
-        function handleIncrease(): void {
-          setAmount((prevAmount) => prevAmount + 1);
-        }
-
-        function handleDecrease(): void {
-          if (!(amount - 1 < 0)) {
-            setAmount((prevAmount) => prevAmount - 1);
-          }
-        }
-
-        function addItemToCart(item): void {
-          
-        }
         return (
           <div key={item.id} className="item">
             <p>{item.name}</p>
@@ -89,9 +91,9 @@ function Item({ itemList, handleItemQuantity, deleteItem }) {
               {item.price.includes(',') ? item.price : item.price + ',00'}
             </p>
             <div className="quantity-adjuster">
-              <button onClick={handleDecrease}>-</button>
-              <p>Amount: {amount > 0 ? amount : 0}</p>
-              <button onClick={handleIncrease}>+</button>
+              <button onClick={() => handleDecrease({...item, quantity: item.quantity + 1})}>-</button>
+              <p>Amount: {item.quantity}</p>
+              <button onClick={() => handleIncrease({...item, quantity: item.quantity + 1})}>+</button>
             </div>
             <button onClick={() => addItemToCart(item.id)}>Add to Cart</button>
             <button onClick={() => deleteItem(item.id)}>Delete item</button>
