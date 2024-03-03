@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import CurrencyInput from "react-currency-input-field";
+import React, { useState, useEffect, useRef } from 'react';
+import CurrencyInput from 'react-currency-input-field';
+import Modal from './Modal.tsx';
 
 interface Item {
   id: number;
@@ -10,21 +11,22 @@ interface Item {
 
 export default function Catalog() {
   const [itemList, setItemList] = useState<Item[]>([]);
-  const [showItemMenu, setShowItemMenu] = useState(false);
+  const [showItemMenu, setShowItemMenu] = useState<Boolean>(false);
+  const [showModal, setShowModal] = useState<Boolean>(false);
   const idRef = useRef(0);
 
-  function handleShow() {
+  function handleShow(): void {
     setShowItemMenu(!showItemMenu);
   }
 
-  function addItem() {
-    const itemName = document.querySelector<HTMLInputElement>("#item-name");
-    const itemPrice = document.querySelector<HTMLInputElement>("#item-price");
+  function addItem(): void {
+    const itemName = document.querySelector<HTMLInputElement>('#item-name');
+    const itemPrice = document.querySelector<HTMLInputElement>('#item-price');
 
     const item: Item = {
       id: idRef.current,
-      name: itemName?.value || "",
-      price: itemPrice?.value || "",
+      name: itemName?.value || '',
+      price: itemPrice?.value || '',
       quantity: 0,
     };
 
@@ -34,12 +36,12 @@ export default function Catalog() {
     console.log(itemList);
   }
 
-  function updateItemQuantity(item) {
+  function handleItemQuantity(item) {
     // Sets the quantity of items the user wants to buy
   }
 
   function deleteItem(itemId: number) {
-    setItemList(itemList.filter(item => item.id !== itemId))
+    setItemList(itemList.filter((item) => item.id !== itemId));
   }
 
   return (
@@ -49,28 +51,49 @@ export default function Catalog() {
         handleShow={handleShow}
         addItem={addItem}
       />
-      {!!itemList.length && <Item itemList={itemList} updateItemQuantity={updateItemQuantity} deleteItem={deleteItem}/>}
+      {!!itemList.length && (
+        <Item
+          itemList={itemList}
+          handleItemQuantity={handleItemQuantity}
+          deleteItem={deleteItem}
+        />
+      )}
     </div>
   );
 }
 
-function Item({ itemList, updateItemQuantity, deleteItem }) {
-
+function Item({ itemList, handleItemQuantity, deleteItem }) {
   return (
     <>
       {itemList.map((item: Item) => {
+        const [amount, setAmount] = useState<number>(0);
+
+        function handleIncrease(): void {
+          setAmount((prevAmount) => prevAmount + 1);
+        }
+
+        function handleDecrease(): void {
+          if (!(amount - 1 < 0)) {
+            setAmount((prevAmount) => prevAmount - 1);
+          }
+        }
+
+        function addItemToCart(item): void {
+          
+        }
         return (
           <div key={item.id} className="item">
             <p>{item.name}</p>
             <p>
-              Price:{" "}
-              {item.price.includes(",") ? item.price : item.price + ",00"}
+              Price:{' '}
+              {item.price.includes(',') ? item.price : item.price + ',00'}
             </p>
             <div className="quantity-adjuster">
-              <button onClick={() => updateItemQuantity(item)}>-</button>
-              <p>Amount: {item.quantity > 0 ? item.quantity : 0}</p>
-              <button onClick={() => updateItemQuantity(item)}>+</button>
+              <button onClick={handleDecrease}>-</button>
+              <p>Amount: {amount > 0 ? amount : 0}</p>
+              <button onClick={handleIncrease}>+</button>
             </div>
+            <button onClick={() => addItemToCart(item.id)}>Add to Cart</button>
             <button onClick={() => deleteItem(item.id)}>Delete item</button>
           </div>
         );
