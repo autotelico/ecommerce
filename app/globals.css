@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    box-sizing: border-box;
+}
+
+header {
+    height: 24px;
+    background-color: orangered;
+    color: #eee;
+}
+
+.header-left * {
+    display: inline;
+}
