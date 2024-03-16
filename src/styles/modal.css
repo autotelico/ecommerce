@@ -1,0 +1,39 @@
+.darken-bg {
+    position: relative;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  #cart-modal {
+    width: 280px;
+    background-color: #ddd;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*Placeholder height*/
+    height: 400px;
+  }
+  
+  .cart-item {
+    margin: 30px 0;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+  }
+  
+  .left-side {
+    display: grid;
+    grid-template: repeat(3, auto) / 1fr;
+  }
+  
+  .right-side {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
+  }
+  
+  .right-side button {
+    height: 50px;
+    width: 80px;
+  }
