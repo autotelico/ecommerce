@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Home() {
+export default function Page() {
   return (
-    <main>
+    <>
       <header>
         <div className="header-welcome">
           {/* Change href */}
@@ -32,6 +32,6 @@ export default function Home() {
         <div id="login-div">login</div>
         <img id="cart" src="" alt="" />
       </div>
-    </main>
+    </>
   );
 }

@@ -4,14 +4,83 @@
 
 :root {
     box-sizing: border-box;
+    --primary-color: orangered;
+    --secondary-color: #eee;
 }
 
 header {
-    height: 24px;
-    background-color: orangered;
+    position: relative;
     color: #eee;
 }
 
-.header-left * {
+.header-welcome {
+    position: relative;
+    background-color: var(--primary-color);
+    height: 24px;
+}
+
+.header-welcome * {
     display: inline;
+}
+
+
+.header-left {
+    position: absolute;
+    left: 30px;
+    width: max-content;
+}
+
+.header-right {
+    position: absolute;
+    right: 30px;
+    width: max-content;
+}
+
+.header-content {
+    position: relative;
+    background-color: lightblue;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#main-icon {
+    height: 150px;
+    width: 250px;
+    position: relative;
+    left: 30px;
+    background-color: indigo;
+}
+
+#search-bar {
+    width: 568px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: var(--secondary-color);
+    padding-left: 30px;
+}
+
+#search-bar:focus, #search-bar:hover {
+    outline: 1px solid red;
+}
+
+#search-button {
+    background-color: var(--primary-color);
+    color: #eee;
+    height: 40px;
+    width: 80px;
+    border-radius: 0 15px 15px 0;
+    position: relative;
+    left: -80px;
+}
+
+#login {
+
+}
+
+#cart {
+    height: 150px;
+    background-color: indigo;
+    width: 250px;
 }
