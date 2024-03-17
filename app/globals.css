@@ -143,8 +143,25 @@ header {
     height: 100px;
   }
   #search-bar {
+    width: 150px;
+    position: relative;
+    left: 30px;
+    font-size: 12px;
+  }
+  #search-button {
+    padding: 5px;
+    left: 0px;
+    font-size: 12px;
+    width: max-content;
+  }
+  #login-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100px;
   }
   #login-spans {
+    height: max-content;
   }
 }

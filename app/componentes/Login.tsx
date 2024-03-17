@@ -16,10 +16,13 @@ export default function Login(): JSX.Element {
         document.querySelector('#login-span1')!;
       const loginSpan2: HTMLSpanElement =
         document.querySelector('#login-span2')!;
+      const br: HTMLBRElement = document.querySelector('#login-div-br')!;
       if (window.innerWidth <= 768) {
+        br.style.display = 'none';
         loginSpan1.style.display = 'none';
         loginSpan2.textContent = 'Faça Login';
       } else {
+        br.style.display = 'inline';
         loginSpan1.style.display = 'inline';
         loginSpan2.textContent = 'Faça login ou cadastre-se';
       }
@@ -31,7 +34,7 @@ export default function Login(): JSX.Element {
       <img src="/person.svg" alt="" id="login-icon" />
       <div id="login-spans">
         <span id="login-span1">Bem-vindo,</span>
-        <br />
+        <br id="login-div-br" />
         <span id="login-span2">
           {isClient && window.innerWidth > 480
             ? 'Faça login ou cadastre-se'
