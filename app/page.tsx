@@ -20,7 +20,7 @@ export default function Home() {
         </div>
       </header>
       <div className="header-content">
-        <img id="main-icon" src="" alt="" />
+        <img id="main-icon" src="/main-logo.jpg" alt="" />
         <form action="">
           <input
             type="text"
@@ -29,8 +29,18 @@ export default function Home() {
           />
           <button id='search-button'>Buscar</button>
         </form>
-        <div id="login-div">login</div>
-        <img id="cart" src="" alt="" />
+        <div id="login-div">
+          <img src="/person.svg" alt="" id="login-icon" />
+          <div id="login-spans">
+            <span>Bem-vindo,</span><br />
+            <span>Faça login ou cadastre-se</span>
+          </div>
+        </div>
+        <div id="cart-div">
+          {/* Valor dos itens em carrinho */}
+          <div id='itens-em-carrinho'>0</div>
+          <img id="cart" src="/cart.svg" alt="" />
+        </div>
       </div>
     </main>
   );

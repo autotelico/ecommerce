@@ -47,7 +47,6 @@ header {
 
 #main-icon {
     height: 150px;
-    width: 250px;
     position: relative;
     left: 30px;
     background-color: indigo;
@@ -65,6 +64,10 @@ header {
     outline: 1px solid red;
 }
 
+#search-bar::before {
+    content: url('../public/magnifier.svg');
+}
+
 #search-button {
     background-color: var(--primary-color);
     color: #eee;
@@ -75,12 +78,40 @@ header {
     left: -80px;
 }
 
-#login {
+#login-div {
+    display: grid;
+    grid-template: auto / auto auto;
+    width: 250px;
+    font-size: 14px;
+}
 
+#login-icon {
+    height: 50px;
+}
+
+#login-spans {
+    height: 48px;
+}
+
+#cart-div {
+    position: relative;
 }
 
 #cart {
-    height: 150px;
-    background-color: indigo;
-    width: 250px;
+    height: 50px;
+}
+
+#itens-em-carrinho {
+    background-color: limegreen;
+    color: white;
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    user-select: none;
 }
