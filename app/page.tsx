@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
+import Login from './componentes/Login';
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <main>
       <header>
@@ -29,13 +31,9 @@ export default function Home() {
           />
           <button id='search-button'>Buscar</button>
         </form>
-        <div id="login-div">
-          <img src="/person.svg" alt="" id="login-icon" />
-          <div id="login-spans">
-            <span>Bem-vindo,</span><br />
-            <span>Faça login ou cadastre-se</span>
-          </div>
-        </div>
+        <Suspense fallback={<p>Carregando...</p>}>
+          <Login />
+        </Suspense>
         <div id="cart-div">
           {/* Valor dos itens em carrinho */}
           <div id='itens-em-carrinho'>0</div>

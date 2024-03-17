@@ -2,115 +2,149 @@
 @tailwind components;
 
 :root {
-    box-sizing: border-box;
-    --primary-color: orangered;
-    --secondary-color: #eee;
+  box-sizing: border-box;
+  --primary-color: orangered;
+  --secondary-color: #eee;
 }
 
 header {
-    position: relative;
-    color: #eee;
+  position: relative;
+  color: #eee;
 }
 
 .header-welcome {
-    position: relative;
-    background-color: var(--primary-color);
-    height: 24px;
+  position: relative;
+  background-color: var(--primary-color);
+  height: 24px;
 }
 
 .header-welcome * {
-    display: inline;
+  display: inline;
 }
 
-
 .header-left {
-    position: absolute;
-    left: 30px;
-    width: max-content;
+  position: absolute;
+  left: 30px;
+  width: max-content;
 }
 
 .header-right {
-    position: absolute;
-    right: 30px;
-    width: max-content;
+  position: absolute;
+  right: 30px;
+  width: max-content;
 }
 
 .header-content {
-    position: relative;
-    background-color: lightblue;
-    height: max-content;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  position: relative;
+  background-color: lightblue;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 #main-icon {
-    height: 150px;
-    position: relative;
-    left: 30px;
-    background-color: indigo;
+  height: 150px;
+  position: relative;
+  left: 30px;
+  background-color: indigo;
 }
 
 #search-bar {
-    width: 568px;
-    height: 40px;
-    border-radius: 25px;
-    background-color: var(--secondary-color);
-    padding-left: 30px;
+  width: 568px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: var(--secondary-color);
+  padding-left: 30px;
 }
 
-#search-bar:focus, #search-bar:hover {
-    outline: 1px solid red;
+#search-bar:focus,
+#search-bar:hover {
+  outline: 1px solid red;
 }
 
 #search-bar::before {
-    content: url('../public/magnifier.svg');
+  content: url('../public/magnifier.svg');
 }
 
 #search-button {
-    background-color: var(--primary-color);
-    color: #eee;
-    height: 40px;
-    width: 80px;
-    border-radius: 0 15px 15px 0;
-    position: relative;
-    left: -80px;
+  background-color: var(--primary-color);
+  color: #eee;
+  height: 40px;
+  width: 80px;
+  border-radius: 0 15px 15px 0;
+  position: relative;
+  left: -80px;
 }
 
 #login-div {
-    display: grid;
-    grid-template: auto / auto auto;
-    width: 250px;
-    font-size: 14px;
+  display: grid;
+  grid-template: auto / auto auto;
+  width: 250px;
+  font-size: 14px;
 }
 
 #login-icon {
-    height: 50px;
+  height: 50px;
 }
 
 #login-spans {
-    height: 48px;
+  height: 48px;
 }
 
 #cart-div {
-    position: relative;
+  position: relative;
 }
 
 #cart {
-    height: 50px;
+  height: 50px;
 }
 
 #itens-em-carrinho {
-    background-color: limegreen;
-    color: white;
-    border-radius: 50px;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    right: -10px;
-    user-select: none;
+  background-color: limegreen;
+  color: white;
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: -10px;
+  user-select: none;
+}
+
+@media screen and (min-width: 769px) and (max-width: 1248px) {
+  body {
+    background-color: lightpink;
+  }
+
+  #search-bar {
+    width: 300px;
+    position: relative;
+    left: 30px;
+  }
+
+  #search-button {
+    left: 0px;
+  }
+
+  #login-div {
+    width: 150px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  body {
+    background-color: lightblue;
+  }
+  #main-icon {
+    height: 100px;
+  }
+  #search-bar {
+    width: 100px;
+  }
+  #login-spans {
+  }
 }
