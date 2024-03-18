@@ -9,10 +9,10 @@
 
 header {
   position: relative;
-  color: #eee;
 }
 
 .header-welcome {
+  color: #eee;
   position: relative;
   background-color: var(--primary-color);
   height: 24px;
@@ -115,6 +115,19 @@ header {
   user-select: none;
 }
 
+#sidebar {
+  /* mudar pra display: none quando terminar de construir */
+
+  position: absolute;
+  top: 0;
+  /* Comentado porque foi colocado diretamente no HTML: */
+  /* right: -200px; */
+}
+
+#sidebar-button {
+  display: none;
+}
+
 @media screen and (min-width: 769px) and (max-width: 1248px) {
   body {
     background-color: lightpink;
@@ -163,5 +176,74 @@ header {
   }
   #login-spans {
     height: max-content;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    background-color: royalblue;
+  }
+  #main-icon {
+    display: none;
+    height: 75px;
+  }
+  #search-bar {
+    width: 150px;
+  }
+  #search-button {
+    width: 55px;
+    left: -30px;
+    font-size: 16px;
+  }
+  #login-div {
+    display: none;
+  }
+  #cart-div {
+    display: none;
+  }
+  #sidebar-button {
+    display: block;
+    height: 50px;
+  }
+  #sidebar-button img {
+    height: 24px;
+    width: 24px;
+  }
+  #sidebar {
+    position: absolute;
+    z-index: 1;
+    height: 1000px;
+    width: 100px;
+    top: 0;
+    background-color: indigo;
+    padding: 0 10px;
+    transition:
+      width 0.5s,
+      right 0.5s;
+    box-shadow: -10px 0 10px rgba(211, 211, 211, 0.3);
+  }
+  #close-sidebar-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 50px;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+  }
+  #sidebar-title {
+    position: relative;
+    right: 10px;
+    height: 100px;
+    width: 300px;
+    background-color: aqua;
+    margin-top: 20px;
+    text-align: center;
   }
 }
