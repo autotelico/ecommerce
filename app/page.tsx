@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Suspense, useEffect, useState } from 'react';
 import Login from './componentes/Login';
 import Sidebar from './componentes/Sidebar';
@@ -84,7 +85,7 @@ export default function Home(): JSX.Element {
           </div>
         </div>
         <div className="header-content">
-          <img
+          <Image
             id="main-icon"
             src="https://media.istockphoto.com/id/1226029166/photo/fruts-vegetables-at-market-india.jpg?s=612x612&w=0&k=20&c=2zOAPF32PTDonIvCUA1PyBhXQ1X0UcKDmQKtknz_sAA="
             alt=""

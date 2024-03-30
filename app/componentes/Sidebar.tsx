@@ -53,7 +53,7 @@ export default function Sidebar({
         </div>
         {cartItems.map((cartItem: Item) => {
           return (
-            <div className="cart-item">
+            <div className="cart-item" key={cartItem.id}>
               <button
                 className="remove-item-button"
                 onClick={() => handleRemove(cartItem)}
