@@ -1,10 +1,11 @@
 'use client';
 
-import { Long_Cang } from 'next/font/google';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Login(): JSX.Element {
   const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsClient(true);
@@ -32,7 +33,7 @@ export default function Login(): JSX.Element {
   return (
     <div id="login-div">
       <img src="/person.svg" alt="" id="login-icon" />
-      <div id="login-spans">
+      <div id="login-spans" onClick={() => router.push('/login')}>
         <span id="login-span1">Bem-vindo,</span>
         <br id="login-div-br" />
         <span id="login-span2">

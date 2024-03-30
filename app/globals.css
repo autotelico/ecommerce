@@ -1,10 +1,28 @@
-@tailwind base;
-@tailwind components;
+body {
+  margin: 0;
+}
+
+img {
+  background-color: indigo;
+}
 
 :root {
   box-sizing: border-box;
   --primary-color: orangered;
   --secondary-color: #eee;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+  background-color: red;
+}
+
+::-webkit-scrollbar-button {
+  background-color: goldenrod;
+}
+
+::-webkit-scrollbar-track {
+  background-color: royalblue;
 }
 
 header {
@@ -41,6 +59,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  gap: 5px;
+}
+
+.header-bottom {
+  border-top: 1px solid black;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #main-icon {
@@ -51,7 +78,7 @@ header {
 }
 
 #search-bar {
-  width: 568px;
+  width: 320px;
   height: 40px;
   border-radius: 25px;
   background-color: var(--secondary-color);
@@ -61,10 +88,6 @@ header {
 #search-bar:focus,
 #search-bar:hover {
   outline: 1px solid red;
-}
-
-#search-bar::before {
-  content: url('../public/magnifier.svg');
 }
 
 #search-button {
@@ -100,6 +123,29 @@ header {
   height: 50px;
 }
 
+.cart-item {
+  position: relative;
+  background-color: darkgray;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.remove-item-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 50px;
+  background-color: crimson;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
 #itens-em-carrinho {
   background-color: limegreen;
   color: white;
@@ -113,19 +159,90 @@ header {
   top: 0;
   right: -10px;
   user-select: none;
+  cursor: pointer;
 }
 
 #sidebar {
   /* mudar pra display: none quando terminar de construir */
-
   position: absolute;
   top: 0;
+  transition: width 0.4s;
   /* Comentado porque foi colocado diretamente no HTML: */
   /* right: -200px; */
 }
 
-#sidebar-button {
+#sidebar-close-button {
   display: none;
+}
+
+#sidebar-title {
+  position: relative;
+  right: 10px;
+  height: 100px;
+  width: 300px;
+  margin-top: 20px;
+}
+
+#sidebar-close-button {
+  display: block;
+  height: 50px;
+}
+
+#sidebar-close-button img {
+  height: 24px;
+  width: 24px;
+}
+
+#sidebar {
+  position: absolute;
+  z-index: 1;
+  height: 1000px;
+  width: 200px;
+  top: 0;
+  background-color: lightgray;
+  padding: 0 10px;
+  transition: width 0.5s, right 0.5s;
+  box-shadow: -10px 0 10px rgba(211, 211, 211, 0.3);
+}
+
+#close-sidebar-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 50px;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+#banner {
+  height: 300px;
+  img {
+    height: 300px;
+    width: 100%;
+  }
+}
+
+#titulo-catalogo {
+  position: absolute;
+  top: -30px;
+  font-weight: 700;
+  border-bottom: 2px solid black;
+}
+
+#catalogo {
+  position: relative;
+  top: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 900px;
+  margin: auto;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1248px) {
@@ -183,6 +300,7 @@ header {
   body {
     background-color: royalblue;
   }
+
   #main-icon {
     display: none;
     height: 75px;
@@ -201,49 +319,18 @@ header {
   #cart-div {
     display: none;
   }
-  #sidebar-button {
-    display: block;
-    height: 50px;
+}
+
+/*Specifics*/
+
+@media screen and (max-width: 645px) {
+  .header-right {
+    display: none;
   }
-  #sidebar-button img {
-    height: 24px;
-    width: 24px;
-  }
-  #sidebar {
-    position: absolute;
-    z-index: 1;
-    height: 1000px;
-    width: 100px;
-    top: 0;
-    background-color: indigo;
-    padding: 0 10px;
-    transition:
-      width 0.5s,
-      right 0.5s;
-    box-shadow: -10px 0 10px rgba(211, 211, 211, 0.3);
-  }
-  #close-sidebar-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    border-radius: 50px;
-    background-color: red;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    cursor: pointer;
-  }
-  #sidebar-title {
-    position: relative;
-    right: 10px;
-    height: 100px;
-    width: 300px;
-    background-color: aqua;
-    margin-top: 20px;
-    text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  #catalogo {
+    width: 768px;
   }
 }
