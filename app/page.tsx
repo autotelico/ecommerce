@@ -5,6 +5,8 @@ import { Suspense, useEffect, useState } from 'react';
 import Login from './componentes/Login';
 import Sidebar from './componentes/Sidebar';
 import Item from './componentes/Item';
+import MainLogo from '@/public/main-logo.jpg'
+import RobotPicture from '../public/robot.jpg'
 
 interface Item {
   id: number;
@@ -60,17 +62,16 @@ export default function Home(): JSX.Element {
     console.log('Removed. Current cart is:', cart);
   };
 
-  // useEffect(() => {
-  //   window.addEventListener('resize', () => {
-  //     document.querySelector<HTMLInputElement>('input')!.value = String(
-  //      window.innerWidth
-  //    );
-  //  });
-  // }, []);
-
   return (
     <main>
       <header>
+        {/* Imagem experimental de um robô pra testar meu design.
+        Não é relevante para este projeto. */}
+        {/* <img src={RobotPicture.src} alt="" style={{
+          position: 'absolute',
+          height: '400px',
+          zIndex: 10,
+        }}/> */}
         <div className="header-welcome">
           {/* Change href */}
           <div className="header-left">
@@ -85,9 +86,9 @@ export default function Home(): JSX.Element {
           </div>
         </div>
         <div className="header-content">
-          <Image
+          <img
             id="main-icon"
-            src="https://media.istockphoto.com/id/1226029166/photo/fruts-vegetables-at-market-india.jpg?s=612x612&w=0&k=20&c=2zOAPF32PTDonIvCUA1PyBhXQ1X0UcKDmQKtknz_sAA="
+            src={MainLogo.src}
             alt=""
           />
           <form action="">

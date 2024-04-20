@@ -18,9 +18,9 @@ export default function Sidebar({
 
   const handleSidebarClick = (): void => {
     const sidebar: HTMLDivElement = document.querySelector('#sidebar')!;
-    sidebar!.style.right === '0'
-      ? (sidebar!.style.right = '-200px')
-      : (sidebar!.style.right = '-0');
+    sidebar!.style.width === '0'
+      ? (sidebar!.style.width = '200px')
+      : (sidebar!.style.width = '0');
     sidebar!.style.display === 'none'
       ? (sidebar!.style.display = 'inline-block')
       : (sidebar!.style.display = 'none');
@@ -44,7 +44,7 @@ export default function Sidebar({
       <button id="sidebar-close-button" onClick={handleSidebarClick}>
         <img src="/sidebar-button.svg" alt="" />
       </button>
-      <div id="sidebar" style={{ right: '0', display: 'none' }}>
+      <div id="sidebar" style={{ width: '0', display: 'none' }}>
         <button id="close-sidebar-button" onClick={handleSidebarClick}>
           X
         </button>

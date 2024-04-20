@@ -4,10 +4,16 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Hiper Mercadão",
-  description: "Sua casa bem alimentada!",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL('https://familysupermarket.vercel.app/'),
+    title: 'Family Supermercados',
+    description: 'Site do Family Supermercados - produtos em atacado e varejo',
+    openGraph: {
+      images: '/main-logo.jpg',
+    },
+  }
+}
 
 export default function RootLayout({
   children,
